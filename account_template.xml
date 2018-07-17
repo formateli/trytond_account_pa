@@ -1,0 +1,767 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tryton>
+    <data noupdate="0">
+#
+# Types
+#
+        <record model="account.account.type.template" id="basic_pa">
+            <field name="name">Plantilla Tipos de Cuenta (Panama)</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_activo">
+            <field name="name">Activo</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_activo_circulante">
+            <field name="name">Activo Circulante</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_activo"/>
+        </record>
+        <record model="account.account.type.template"
+                id="account_type_inventarios">
+            <field name="name">Inventarios</field>
+            <field name="parent" ref="account_type_activo_circulante"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_activo_fijo">
+            <field name="name">Activo Fijo</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_activo"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_pasivo">
+            <field name="name">Pasivo</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_pasivo_circulante">
+            <field name="name">Pasivo Circulante</field>
+            <field name="sequence" eval="10"/>
+            <field name="parent" ref="account_type_pasivo"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_pasivo_largo_plazo">
+            <field name="name">Pasivo Largo Plazo</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_pasivo"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_patrimonio">
+            <field name="name">Patrimonio</field>
+            <field name="sequence" eval="70"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="balance_sheet" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_ventas">
+            <field name="name">Ventas</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="income_statement" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_costo_ventas">
+            <field name="name">Costo de Ventas</field>
+            <field name="sequence" eval="40"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="income_statement" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_ingreso">
+            <field name="name">Ingresos</field>
+            <field name="sequence" eval="50"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="income_statement" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_gasto">
+            <field name="name">Gastos</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="basic_pa"/>
+            <field name="income_statement" eval="True"/>
+        </record>
+
+
+#
+# Chart of Accounts template
+#
+
+      <!-- ACTIVOS -->
+
+        <record id="chart_0" model="account.account.template">
+              <field name="code">0</field>
+              <field name="name">Plan de Cuentas (Panama)</field>
+              <field name="type" ref="basic_pa"/>
+        </record>
+
+        <record id="chart_1" model="account.account.template">
+              <field name="code">1</field>
+              <field name="name">Activo</field>
+              <field name="type" ref="account_type_activo"/>
+              <field name="kind">view</field>
+              <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_11" model="account.account.template">
+              <field name="code">11</field>
+              <field name="name">Activo circulante</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_1"/>
+        </record>
+        <record id="chart_111" model="account.account.template">
+              <field name="code">111</field>
+              <field name="name">Caja y Bancos</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_11"/>
+        </record>
+        <record id="chart_11110" model="account.account.template">
+              <field name="code">11110</field>
+              <field name="name">Caja</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_111"/>
+        </record>
+        <record id="chart_1111010" model="account.account.template">
+              <field name="code">1111010</field>
+              <field name="name">Caja menuda</field>
+              <field name="kind">other</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="deferral" eval="True"/>
+              <field name="parent" ref="chart_11110"/>
+        </record>
+        <record id="chart_1111020" model="account.account.template">
+              <field name="code">1111020</field>
+              <field name="name">Caja general</field>
+              <field name="kind">other</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="deferral" eval="True"/>
+              <field name="parent" ref="chart_11110"/>
+        </record>
+        <record id="chart_11120" model="account.account.template">
+              <field name="code">11120</field>
+              <field name="name">Bancos - Cuenta Corriente</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_111"/>
+        </record>
+        <record id="chart_1112010" model="account.account.template">
+              <field name="code">1112010</field>
+              <field name="name">Cuenta corriente</field>
+              <field name="kind">other</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="deferral" eval="True"/>
+              <field name="parent" ref="chart_11120"/>
+        </record>
+        <record id="chart_112" model="account.account.template">
+              <field name="code">112</field>
+              <field name="name">Cuentas por Cobrar</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_11"/>
+        </record>
+        <record id="chart_11210" model="account.account.template">
+              <field name="code">11210</field>
+              <field name="name">Cuentas por Cobrar Comerciales</field>
+              <field name="kind">view</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="parent" ref="chart_112"/>
+        </record>
+        <record id="account_receivable" model="account.account.template">
+              <field name="code">112109999</field>
+              <field name="name">Cuentas por Cobrar Comerciales</field>
+              <field name="kind">receivable</field>
+              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="reconcile" eval="True"/>
+              <field name="deferral" eval="True"/>
+              <field name="party_required" eval="True"/>
+              <field name="parent" ref="chart_11210"/>
+        </record>
+        <record id="chart_11290" model="account.account.template">
+            <field name="code">11290</field>
+            <field name="name">Cuentas por Cobrar Otras</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_112"/>
+        </record>
+        <record id="chart_112909999" model="account.account.template">
+            <field name="code">112909999</field>
+            <field name="name">Cuentas por Cobrar Otras</field>
+            <field name="kind">receivable</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11290"/>
+        </record>
+
+
+        <record id="chart_115" model="account.account.template">
+            <field name="code">115</field>
+            <field name="name">Inventario de Mercancia</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_11"/>
+        </record>
+        <record id="chart_11510" model="account.account.template">
+            <field name="code">11510</field>
+            <field name="name">Inventario de Mercancia</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_115"/>
+        </record>
+
+        <record id="account_stock" model="account.account.template">
+            <field name="code">115109999</field>
+            <field name="name">Inventario de Mercancia</field>
+            <field name="type" ref="account_type_inventarios"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11510"/>
+            <field name="kind">stock</field>
+        </record>
+
+        <record id="chart_11580" model="account.account.template">
+            <field name="code">11580</field>
+            <field name="name">Inventario en Transito</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_115"/>
+        </record>
+
+        <record model="account.account.template"
+                 id="account_stock_supplier">
+            <field name="code">115800010</field>
+            <field name="name">Mercancia en transito del Proveedor</field>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11580"/>
+            <field name="type" ref="account_type_inventarios"/>
+            <field name="kind">stock</field>
+        </record>
+        <record model="account.account.template"
+                id="account_stock_customer">
+            <field name="code">115800020</field>
+            <field name="name">Mercancia en transito al Cliente</field>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11580"/>
+            <field name="type" ref="account_type_inventarios"/>
+            <field name="kind">stock</field>
+        </record>
+
+        <record model="account.account.template"
+                id="account_stock_production">
+            <field name="code">115800030</field>
+            <field name="name">Mercancia en Produccion</field>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11580"/>
+            <field name="type" ref="account_type_inventarios"/>
+            <field name="kind">stock</field>
+        </record>
+        <record model="account.account.template"
+                id="chart_115809999">
+            <field name="code">115809999</field>
+            <field name="name" lang="es">Mercancia en transito otros</field>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11580"/>
+            <field name="type" ref="account_type_inventarios"/>
+            <field name="kind">stock</field>
+        </record>
+        <record id="chart_116" model="account.account.template">
+            <field name="code">116</field>
+            <field name="name">Gastos Pagados por Adelantado</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_11"/>
+        </record>
+        <record id="chart_11610" model="account.account.template">
+            <field name="code">11610</field>
+            <field name="name">Gastos Pagados por Adelantado</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_116"/>
+        </record>
+        <record id="chart_116109999" model="account.account.template">
+            <field name="code">116109999</field>
+            <field name="name">Gastos Pagados por Adelantado</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_11610"/>
+        </record>
+
+        <record id="chart_14" model="account.account.template">
+            <field name="code">14</field>
+            <field name="name">Activo Fijo</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="parent" ref="chart_1"/>
+        </record>
+        <record id="chart_142" model="account.account.template">
+            <field name="code">112</field>
+            <field name="name">Mobiliario y Equipos</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="parent" ref="chart_11"/>
+        </record>
+        <record id="chart_14210" model="account.account.template">
+            <field name="code">14210</field>
+            <field name="name">Mobiliario y Equipos</field>
+            <field name="kind">view</field>
+            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="parent" ref="chart_142"/>
+        </record>
+        <record id="chart_142109999" model="account.account.template">
+            <field name="code">142109999</field>
+            <field name="name">Mobiliario y Equipos</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_14210"/>
+        </record>
+
+
+      <!-- PASIVOS -->
+
+        <record id="chart_2" model="account.account.template">
+            <field name="code">2</field>
+            <field name="name">Pasivos</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_21" model="account.account.template">
+            <field name="code">21</field>
+            <field name="name">Pasivo Circulante</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_2"/>
+        </record>
+        <record id="chart_212" model="account.account.template">
+            <field name="code">212</field>
+            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_21"/>
+        </record>
+        <record id="chart_21290" model="account.account.template">
+            <field name="code">21290</field>
+            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_212"/>
+        </record>
+        <record id="account_payable" model="account.account.template">
+            <field name="code">212909999</field>
+            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account_type_pasivo_circulante"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_21290"/>
+        </record>
+
+        <record id="chart_216" model="account.account.template">
+            <field name="code">216</field>
+            <field name="name">Impuestos y ret. por enterar</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_21"/>
+        </record>
+        <record id="chart_21602" model="account.account.template">
+            <field name="code">21602</field>
+            <field name="name">I.T.B.M.S</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_216"/>
+        </record>
+        <record id="chart_216021" model="account.account.template">
+            <field name="code">216021</field>
+            <field name="name">I.T.B.M.S debito fiscal</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_21602"/>
+        </record>
+        <record id="chart_21602101" model="account.account.template">
+            <field name="code">21602101</field>
+            <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_pasivo_circulante"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_216021"/>
+        </record>
+        <record id="chart_216022" model="account.account.template">
+            <field name="code">216022</field>
+            <field name="name">I.T.B.M.S credito fiscal</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_21602"/>
+        </record>
+        <record id="chart_21602201" model="account.account.template">
+            <field name="code">21602201</field>
+            <field name="name">I.T.B.M.S credito fiscal por cobrar (Compra)</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_pasivo_circulante"/>
+            <field name="deferral" eval="True"/>
+            <field name="parent" ref="chart_216022"/>
+        </record>
+
+        <record id="chart_25" model="account.account.template">
+            <field name="code">25</field>
+            <field name="name">Pasivo a Largo Plazo</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_2"/>
+        </record>
+
+
+      <!-- PATRIMONIO -->
+
+        <record id="chart_3" model="account.account.template">
+            <field name="code">3</field>
+            <field name="name">Patrimonio</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_390" model="account.account.template">
+            <field name="code">390</field>
+            <field name="name">Ganancia y/o perdida del ejercicio</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_3"/>
+        </record>
+        <record id="chart_39090" model="account.account.template">
+            <field name="code">39090</field>
+            <field name="name">Ganancia y/o perdida del ejercicio</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_390"/>
+        </record>
+        <record id="chart_390909999" model="account.account.template">
+            <field name="code">390909999</field>
+            <field name="name">Ganancia y/o perdida del ejercicio</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="parent" ref="chart_39090"/>
+        </record>
+
+
+      <!-- VENTAS -->
+
+        <record id="chart_4" model="account.account.template">
+            <field name="code">4</field>
+            <field name="name">Ventas</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_410" model="account.account.template">
+            <field name="code">410</field>
+            <field name="name">Ventas</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_4"/>
+        </record>
+        <record id="account_revenue" model="account.account.template">
+            <field name="code">4109999</field>
+            <field name="name">Ventas</field>
+            <field name="kind">revenue</field>
+            <field name="type" ref="account_type_ventas"/>
+            <field name="parent" ref="chart_410"/>
+        </record>
+        <record id="chart_420" model="account.account.template">
+            <field name="code">420</field>
+            <field name="name">Devoluciones en Ventas</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_4"/>
+        </record>
+        <record id="chart_4209999" model="account.account.template">
+            <field name="code">4209999</field>
+            <field name="name">Devoluciones en Ventas</field>
+            <field name="kind">revenue</field>
+            <field name="type" ref="account_type_ventas"/>
+            <field name="parent" ref="chart_420"/>
+        </record>
+        <record id="chart_430" model="account.account.template">
+            <field name="code">430</field>
+            <field name="name">Descuento en Ventas</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_4"/>
+        </record>
+        <record id="chart_4309999" model="account.account.template">
+            <field name="code">4309999</field>
+            <field name="name">Descuento en Ventas</field>
+            <field name="kind">revenue</field>
+            <field name="type" ref="account_type_ventas"/>
+            <field name="parent" ref="chart_430"/>
+        </record>
+
+
+
+      <!-- COSTO DE VENTA -->
+
+        <record id="chart_5" model="account.account.template">
+            <field name="code">5</field>
+            <field name="name">Costo de venta</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_510" model="account.account.template">
+            <field name="code">510</field>
+            <field name="name">Costo de mercancia vendida</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_5"/>
+        </record>
+        <record id="account_cogs" model="account.account.template">
+            <field name="code">5109999</field>
+            <field name="name">Costo de mercancia vendida</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_510"/>
+        </record>
+        <record id="chart_520" model="account.account.template">
+            <field name="code">520</field>
+            <field name="name">Compras</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_5"/>
+        </record>
+        <record id="chart_52010" model="account.account.template">
+            <field name="code">52010</field>
+            <field name="name">Compras</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_520"/>
+        </record>
+        <record id="account_expense" model="account.account.template">
+            <field name="code">520109999</field>
+            <field name="name">Compras</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_52010"/>
+        </record>
+        <record id="chart_52020" model="account.account.template">
+            <field name="code">52020</field>
+            <field name="name">Devoluciones en Compras</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_520"/>
+        </record>
+        <record id="chart_520209999" model="account.account.template">
+            <field name="code">520209999</field>
+            <field name="name">Devoluciones en Compras</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_52020"/>
+        </record>
+        <record id="chart_52030" model="account.account.template">
+            <field name="code">52030</field>
+            <field name="name">Descuento en Compras</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_520"/>
+        </record>
+        <record id="chart_520309999" model="account.account.template">
+            <field name="code">520309999</field>
+            <field name="name">Descuento en Compras</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_52030"/>
+        </record>
+
+        <record id="chart_530" model="account.account.template">
+            <field name="code">530</field>
+            <field name="name">Ajustes al inventario</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_5"/>
+        </record>
+        <record id="cost_price_counterpart_account"
+                model="account.account.template">
+            <field name="code">5308000</field>
+            <field name="name">Ajustes al inventario</field>
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_530"/>
+        </record>
+        <record model="account.account.template"
+                id="account_stock_lost_found">
+            <field name="code">5309000</field>
+            <field name="name" lang="es">Ajuste al inventario toma fisica</field>
+            <field name="kind">stock</field>
+            <field name="type" ref="account_type_costo_ventas"/>
+            <field name="parent" ref="chart_530"/>
+        </record>
+
+      <!-- Ingresos -->
+
+        <record id="chart_6" model="account.account.template">
+            <field name="code">6</field>
+            <field name="name">Ingresos Otros</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_610" model="account.account.template">
+            <field name="code">610</field>
+            <field name="name">Ingresos Otros</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_6"/>
+        </record>
+        <record id="chart_6109999" model="account.account.template">
+            <field name="code">6109999</field>
+            <field name="name">Ingresos Otros</field>
+            <field name="kind">revenue</field>
+            <field name="type" ref="account_type_ingreso"/>
+            <field name="parent" ref="chart_610"/>
+        </record>
+
+
+      <!-- Gastos -->
+
+        <record id="chart_7" model="account.account.template">
+            <field name="code">7</field>
+            <field name="name">Gastos</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_0"/>
+        </record>
+
+        <record id="chart_710" model="account.account.template">
+            <field name="code">710</field>
+            <field name="name">Gastos de Produccion</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_7"/>
+        </record>
+        <record id="chart_71010" model="account.account.template">
+            <field name="code">71010</field>
+            <field name="name">Mano de Obra</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_7101010" model="account.account.template">
+            <field name="code">7101010</field>
+            <field name="name">Sueldos y Salarios</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_71010"/>
+        </record>
+        <record id="chart_71010109999" model="account.account.template">
+            <field name="code">71010109999</field>
+            <field name="name">Sueldos y Salarios</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_7101010"/>
+        </record>
+        <record id="chart_7101020" model="account.account.template">
+            <field name="code">7101020</field>
+            <field name="name">Aporte CSS</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_71010"/>
+        </record>
+        <record id="chart_71010209999" model="account.account.template">
+            <field name="code">71010209999</field>
+            <field name="name">Aporte CSS</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_7101020"/>
+        </record>
+        <record id="chart_7101090" model="account.account.template">
+            <field name="code">7101090</field>
+            <field name="name">Mano de Obra Otros</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_71010"/>
+        </record>
+        <record id="chart_71010909999" model="account.account.template">
+            <field name="code">71010909999</field>
+            <field name="name">Mano de Obra Otros</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_7101090"/>
+        </record>
+
+        <record id="chart_71020" model="account.account.template">
+            <field name="code">71020</field>
+            <field name="name">Alquileres</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_7102010" model="account.account.template">
+            <field name="code">7102010</field>
+            <field name="name">Alquiler Local</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_71020"/>
+        </record>
+        <record id="chart_71020109999" model="account.account.template">
+            <field name="code">71020109999</field>
+            <field name="name">Alquiler Local</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_7102010"/>
+        </record>
+
+        <record id="chart_7102020" model="account.account.template">
+            <field name="code">7102020</field>
+            <field name="name">Alquiler Maq. y Equipos</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_71020"/>
+        </record>
+        <record id="chart_71020209999" model="account.account.template">
+            <field name="code">71020209999</field>
+            <field name="name">Alquiler Maq. y Equipos</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_7102020"/>
+        </record>
+
+        <record id="chart_71030" model="account.account.template">
+            <field name="code">71030</field>
+            <field name="name">Electricidad</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_710309999" model="account.account.template">
+            <field name="code">710309999</field>
+            <field name="name">Electricidad</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_71030"/>
+        </record>
+
+        <record id="chart_71040" model="account.account.template">
+            <field name="code">71040</field>
+            <field name="name">Gas G.L.P.</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_710409999" model="account.account.template">
+            <field name="code">710409999</field>
+            <field name="name">Gas G.L.P.</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_71040"/>
+        </record>
+
+        <record id="chart_71050" model="account.account.template">
+            <field name="code">71050</field>
+            <field name="name">Telefonia / Internet</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_710509999" model="account.account.template">
+            <field name="code">710509999</field>
+            <field name="name">Telefonia / Internet</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_71050"/>
+        </record>
+
+
+        <record id="chart_71090" model="account.account.template">
+            <field name="code">71090</field>
+            <field name="name">Gastos de Produccion</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_710"/>
+        </record>
+        <record id="chart_710909999" model="account.account.template">
+            <field name="code">710909999</field>
+            <field name="name">Gastos de Produccion</field>
+            <field name="kind">expense</field>
+            <field name="type" ref="account_type_gasto"/>
+            <field name="parent" ref="chart_71090"/>
+        </record>
+
+        <record id="chart_720" model="account.account.template">
+            <field name="code">720</field>
+            <field name="name">Gastos de Venta</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_7"/>
+        </record>
+        <record id="chart_730" model="account.account.template">
+            <field name="code">730</field>
+            <field name="name">Gastos de Administracion</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_7"/>
+        </record>
+        <record id="chart_790" model="account.account.template">
+            <field name="code">790</field>
+            <field name="name">Gastos Otros</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_7"/>
+        </record>
+
+    </data>
+</tryton>

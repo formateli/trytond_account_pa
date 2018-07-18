@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tryton>
-    <data noupdate="0">
+    <data>
 #
 # Types
 #
@@ -175,14 +175,14 @@
         </record>
         <record id="chart_11290" model="account.account.template">
             <field name="code">11290</field>
-            <field name="name">Cuentas por Cobrar Otras</field>
+            <field name="name">Cuentas por Cobrar Otros</field>
             <field name="kind">view</field>
             <field name="type" ref="account_type_activo_circulante"/>
             <field name="parent" ref="chart_112"/>
         </record>
         <record id="chart_112909999" model="account.account.template">
             <field name="code">112909999</field>
-            <field name="name">Cuentas por Cobrar Otras</field>
+            <field name="name">Cuentas por Cobrar Otros</field>
             <field name="kind">receivable</field>
             <field name="type" ref="account_type_activo_circulante"/>
             <field name="reconcile" eval="True"/>
@@ -330,19 +330,35 @@
         </record>
         <record id="chart_212" model="account.account.template">
             <field name="code">212</field>
-            <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="name">Cuentas por Pagar</field>
             <field name="kind">view</field>
             <field name="parent" ref="chart_21"/>
         </record>
-        <record id="chart_21290" model="account.account.template">
-            <field name="code">21290</field>
+        <record id="chart_21210" model="account.account.template">
+            <field name="code">21210</field>
             <field name="name">Cuentas por Pagar Comerciales</field>
             <field name="kind">view</field>
             <field name="parent" ref="chart_212"/>
         </record>
         <record id="account_payable" model="account.account.template">
-            <field name="code">212909999</field>
+            <field name="code">212109999</field>
             <field name="name">Cuentas por Pagar Comerciales</field>
+            <field name="kind">payable</field>
+            <field name="type" ref="account_type_pasivo_circulante"/>
+            <field name="reconcile" eval="True"/>
+            <field name="deferral" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_21210"/>
+        </record>
+        <record id="chart_21290" model="account.account.template">
+            <field name="code">21290</field>
+            <field name="name">Cuentas por Pagar Otros</field>
+            <field name="kind">view</field>
+            <field name="parent" ref="chart_212"/>
+        </record>
+        <record id="chart_212909999" model="account.account.template">
+            <field name="code">212909999</field>
+            <field name="name">Cuentas por Pagar Otros</field>
             <field name="kind">payable</field>
             <field name="type" ref="account_type_pasivo_circulante"/>
             <field name="reconcile" eval="True"/>
@@ -573,22 +589,22 @@
 
         <record id="chart_6" model="account.account.template">
             <field name="code">6</field>
-            <field name="name">Ingresos Otros</field>
+            <field name="name">Ingresos</field>
             <field name="kind">view</field>
             <field name="parent" ref="chart_0"/>
         </record>
-        <record id="chart_610" model="account.account.template">
-            <field name="code">610</field>
+        <record id="chart_690" model="account.account.template">
+            <field name="code">690</field>
             <field name="name">Ingresos Otros</field>
             <field name="kind">view</field>
             <field name="parent" ref="chart_6"/>
         </record>
-        <record id="chart_6109999" model="account.account.template">
-            <field name="code">6109999</field>
+        <record id="chart_6909999" model="account.account.template">
+            <field name="code">6909999</field>
             <field name="name">Ingresos Otros</field>
             <field name="kind">revenue</field>
             <field name="type" ref="account_type_ingreso"/>
-            <field name="parent" ref="chart_610"/>
+            <field name="parent" ref="chart_690"/>
         </record>
 
 

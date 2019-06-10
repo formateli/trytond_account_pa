@@ -59,6 +59,7 @@
             <field name="name">Pasivo Circulante</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_pasivo"/>
+            <field name="statement">balance</field>
         </record>
 
         <record model="account.account.type.template" id="account_type_por_pagar">

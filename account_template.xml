@@ -335,18 +335,19 @@
             <field name="name">Pasivo Circulante</field>
             <field name="parent" ref="chart_2"/>
         </record>
+
         <record id="chart_212" model="account.account.template">
-            <field name="code">212</field>
+            <field name="code">2120</field>
             <field name="name">Cuentas por Pagar</field>
             <field name="parent" ref="chart_21"/>
         </record>
         <record id="chart_21210" model="account.account.template">
-            <field name="code">21210</field>
+            <field name="code">212010</field>
             <field name="name">Cuentas por Pagar Comerciales</field>
             <field name="parent" ref="chart_212"/>
         </record>
         <record id="account_payable" model="account.account.template">
-            <field name="code">212109999</field>
+            <field name="code">2120109999</field>
             <field name="name">Cuentas por Pagar Comerciales</field>
             <field name="type" ref="account_type_por_pagar"/>
             <field name="reconcile" eval="True"/>
@@ -355,13 +356,13 @@
             <field name="parent" ref="chart_21210"/>
         </record>
         <record id="chart_21290" model="account.account.template">
-            <field name="code">21290</field>
-            <field name="name">Cuentas por Pagar Otros</field>
+            <field name="code">212090</field>
+            <field name="name">Cuentas por Pagar Comerciales Otros</field>
             <field name="parent" ref="chart_212"/>
         </record>
         <record id="chart_212909999" model="account.account.template">
-            <field name="code">212909999</field>
-            <field name="name">Cuentas por Pagar Otros</field>
+            <field name="code">2120909999</field>
+            <field name="name">Cuentas por Pagar Comerciales Otros</field>
             <field name="type" ref="account_type_por_pagar"/>
             <field name="reconcile" eval="True"/>
             <field name="deferral" eval="True"/>
@@ -370,34 +371,34 @@
         </record>
 
         <record id="chart_216" model="account.account.template">
-            <field name="code">216</field>
+            <field name="code">2160</field>
             <field name="name">Impuestos y ret. por enterar</field>
             <field name="parent" ref="chart_21"/>
         </record>
         <record id="chart_21602" model="account.account.template">
-            <field name="code">21602</field>
+            <field name="code">216020</field>
             <field name="name">I.T.B.M.S</field>
             <field name="parent" ref="chart_216"/>
         </record>
         <record id="chart_216021" model="account.account.template">
-            <field name="code">216021</field>
+            <field name="code">21602010</field>
             <field name="name">I.T.B.M.S debito fiscal</field>
             <field name="parent" ref="chart_21602"/>
         </record>
         <record id="chart_21602101" model="account.account.template">
-            <field name="code">21602101</field>
+            <field name="code">2160201010</field>
             <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
             <field name="type" ref="account_type_pasivo_circulante"/>
             <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_216021"/>
         </record>
         <record id="chart_216022" model="account.account.template">
-            <field name="code">216022</field>
+            <field name="code">21602020</field>
             <field name="name">I.T.B.M.S credito fiscal</field>
             <field name="parent" ref="chart_21602"/>
         </record>
         <record id="chart_21602201" model="account.account.template">
-            <field name="code">21602201</field>
+            <field name="code">2160202010</field>
             <field name="name">I.T.B.M.S credito fiscal por cobrar (Compra)</field>
             <field name="type" ref="account_type_pasivo_circulante"/>
             <field name="deferral" eval="True"/>

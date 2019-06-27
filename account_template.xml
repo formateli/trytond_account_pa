@@ -25,7 +25,6 @@
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
-
         <record model="account.account.type.template" id="account_type_por_cobrar">
             <field name="name">Cuentas por Cobrar</field>
             <field name="sequence" eval="10"/>
@@ -68,7 +67,6 @@
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_pasivo_circulante"/>
             <field name="statement">balance</field>
-            <field name="payable" eval="True"/>
         </record>
 
         <record model="account.account.type.template" id="account_type_pasivo_largo_plazo">
@@ -156,14 +154,12 @@
               <field name="code">1111010</field>
               <field name="name">Caja menuda</field>
               <field name="type" ref="account_type_activo_circulante"/>
-              <field name="deferral" eval="True"/>
               <field name="parent" ref="chart_11110"/>
         </record>
         <record id="chart_1111020" model="account.account.template">
               <field name="code">1111020</field>
               <field name="name">Caja general</field>
               <field name="type" ref="account_type_activo_circulante"/>
-              <field name="deferral" eval="True"/>
               <field name="parent" ref="chart_11110"/>
         </record>
         <record id="chart_11120" model="account.account.template">
@@ -176,7 +172,6 @@
               <field name="code">1112010</field>
               <field name="name">Cuenta corriente</field>
               <field name="type" ref="account_type_activo_circulante"/>
-              <field name="deferral" eval="True"/>
               <field name="parent" ref="chart_11120"/>
         </record>
         <record id="chart_112" model="account.account.template">
@@ -196,7 +191,6 @@
               <field name="name">Cuentas por Cobrar Comerciales</field>
               <field name="type" ref="account_type_por_cobrar"/>
               <field name="reconcile" eval="True"/>
-              <field name="deferral" eval="True"/>
               <field name="party_required" eval="True"/>
               <field name="parent" ref="chart_11210"/>
         </record>
@@ -211,7 +205,6 @@
             <field name="name">Cuentas por Cobrar Otros</field>
             <field name="type" ref="account_type_por_cobrar"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11290"/>
         </record>
 
@@ -232,7 +225,6 @@
             <field name="code">115109999</field>
             <field name="name">Inventario de Mercancia</field>
             <field name="type" ref="account_type_inventarios"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11510"/>
         </record>
 
@@ -247,7 +239,6 @@
                  id="account_stock_supplier">
             <field name="code">115800010</field>
             <field name="name">Mercancia en transito del Proveedor</field>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11580"/>
             <field name="type" ref="account_type_inventarios"/>
         </record>
@@ -255,7 +246,6 @@
                 id="account_stock_customer">
             <field name="code">115800020</field>
             <field name="name">Mercancia en transito al Cliente</field>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11580"/>
             <field name="type" ref="account_type_inventarios"/>
         </record>
@@ -264,7 +254,6 @@
                 id="account_stock_production">
             <field name="code">115800030</field>
             <field name="name">Mercancia en Produccion</field>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11580"/>
             <field name="type" ref="account_type_inventarios"/>
         </record>
@@ -272,7 +261,6 @@
                 id="chart_115809999">
             <field name="code">115809999</field>
             <field name="name" lang="es">Mercancia en transito otros</field>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11580"/>
             <field name="type" ref="account_type_inventarios"/>
         </record>
@@ -292,7 +280,6 @@
             <field name="code">116109999</field>
             <field name="name">Gastos Pagados por Adelantado</field>
             <field name="type" ref="account_type_activo_circulante"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_11610"/>
         </record>
 
@@ -318,7 +305,6 @@
             <field name="code">142109999</field>
             <field name="name">Mobiliario y Equipos</field>
             <field name="type" ref="account_type_activo_fijo"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_14210"/>
         </record>
 
@@ -351,7 +337,6 @@
             <field name="name">Cuentas por Pagar Comerciales</field>
             <field name="type" ref="account_type_por_pagar"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="party_required" eval="True"/>
             <field name="parent" ref="chart_21210"/>
         </record>
@@ -365,7 +350,6 @@
             <field name="name">Cuentas por Pagar Comerciales Otros</field>
             <field name="type" ref="account_type_por_pagar"/>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
             <field name="party_required" eval="True"/>
             <field name="parent" ref="chart_21290"/>
         </record>
@@ -389,7 +373,6 @@
             <field name="code">2160201010</field>
             <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
             <field name="type" ref="account_type_pasivo_circulante"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_216021"/>
         </record>
         <record id="chart_216022" model="account.account.template">
@@ -401,7 +384,6 @@
             <field name="code">2160202010</field>
             <field name="name">I.T.B.M.S credito fiscal por cobrar (Compra)</field>
             <field name="type" ref="account_type_pasivo_circulante"/>
-            <field name="deferral" eval="True"/>
             <field name="parent" ref="chart_216022"/>
         </record>
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tryton>
     <data>
-#
-# Types
-#
+
+        <!-- Account Type Template -->
+
         <record model="account.account.type.template" id="basic_pa">
-            <field name="name">Plantilla Tipos de Cuenta (Panama)</field>
+            <field name="name">Plantilla de Tipos de Cuenta (Panama)</field>
             <field name="sequence" eval="10"/>
             <field name="statement" eval="None"/>
         </record>
@@ -22,6 +22,13 @@
             <field name="name">Activo Circulante</field>
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_activo"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+        <record model="account.account.type.template" id="account_type_caja_banco">
+            <field name="name">Caja y Bancos</field>
+            <field name="sequence" eval="5"/>
+            <field name="parent" ref="account_type_activo_circulante"/>
             <field name="statement">balance</field>
             <field name="assets" eval="True"/>
         </record>
@@ -67,6 +74,7 @@
             <field name="sequence" eval="10"/>
             <field name="parent" ref="account_type_pasivo_circulante"/>
             <field name="statement">balance</field>
+            <field name="payable" eval="True"/>
         </record>
 
         <record model="account.account.type.template" id="account_type_pasivo_largo_plazo">
@@ -114,9 +122,7 @@
         </record>
 
 
-#
-# Chart of Accounts template
-#
+      <!-- Account Template -->
 
       <!-- ACTIVOS -->
 
@@ -141,37 +147,37 @@
         <record id="chart_111" model="account.account.template">
               <field name="code">111</field>
               <field name="name">Caja y Bancos</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_11110" model="account.account.template">
               <field name="code">11110</field>
               <field name="name">Caja</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_111"/>
         </record>
         <record id="chart_1111010" model="account.account.template">
               <field name="code">1111010</field>
               <field name="name">Caja menuda</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_11110"/>
         </record>
         <record id="chart_1111020" model="account.account.template">
               <field name="code">1111020</field>
               <field name="name">Caja general</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_11110"/>
         </record>
         <record id="chart_11120" model="account.account.template">
               <field name="code">11120</field>
               <field name="name">Bancos - Cuenta Corriente</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_111"/>
         </record>
         <record id="chart_1112010" model="account.account.template">
               <field name="code">1112010</field>
               <field name="name">Cuenta corriente</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" ref="account_type_caja_banco"/>
               <field name="parent" ref="chart_11120"/>
         </record>
         <record id="chart_112" model="account.account.template">

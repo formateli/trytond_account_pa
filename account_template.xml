@@ -92,57 +92,65 @@
             <field name="statement">balance</field>
         </record>
 
+        <record model="account.account.type.template" id="account_type_ganancia_perdida_income">
+            <field name="name">Ganancias y/o Perdidas</field>
+            <field name="sequence" eval="90"/>
+            <field name="parent" ref="account_type_patrimonio"/>
+            <field name="statement">income</field>
+        </record>
+
         <record model="account.account.type.template" id="account_type_ventas">
             <field name="name">Ventas</field>
             <field name="sequence" eval="30"/>
-            <field name="parent" ref="basic_pa"/>
+            <field name="parent" ref="account_type_ganancia_perdida_income"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
         <record model="account.account.type.template" id="account_type_costo_ventas">
             <field name="name">Costo de Ventas</field>
             <field name="sequence" eval="40"/>
-            <field name="parent" ref="basic_pa"/>
+            <field name="parent" ref="account_type_ganancia_perdida_income"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
         <record model="account.account.type.template" id="account_type_ingreso">
             <field name="name">Ingresos</field>
             <field name="sequence" eval="50"/>
-            <field name="parent" ref="basic_pa"/>
+            <field name="parent" ref="account_type_ganancia_perdida_income"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
         <record model="account.account.type.template" id="account_type_gasto">
             <field name="name">Gastos</field>
             <field name="sequence" eval="60"/>
-            <field name="parent" ref="basic_pa"/>
+            <field name="parent" ref="account_type_ganancia_perdida_income"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
 
 
-      <!-- Account Template -->
+        <!-- Account Template -->
 
-      <!-- ACTIVOS -->
+        <!-- ACTIVOS -->
 
         <record id="chart_0" model="account.account.template">
-              <field name="code">0</field>
-              <field name="name">Plan de Cuentas (Panama)</field>
-              <field name="type" ref="basic_pa"/>
+            <field name="code">0</field>
+            <field name="name">Plan de Cuentas (Panama)</field>
+            <field name="type" ref="basic_pa"/>
+            <field name="closed" eval="True"/>
         </record>
 
         <record id="chart_1" model="account.account.template">
-              <field name="code">1</field>
-              <field name="name">Activo</field>
-              <field name="type" ref="account_type_activo"/>
-              <field name="parent" ref="chart_0"/>
+            <field name="code">1</field>
+            <field name="name">Activo</field>
+            <field name="type" ref="account_type_activo"/>
+            <field name="parent" ref="chart_0"/>
         </record>
         <record id="chart_11" model="account.account.template">
-              <field name="code">11</field>
-              <field name="name">Activo circulante</field>
-              <field name="type" ref="account_type_activo_circulante"/>
-              <field name="parent" ref="chart_1"/>
+            <field name="code">11</field>
+            <field name="name">Activo circulante</field>
+            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="parent" ref="chart_1"/>
         </record>
         <record id="chart_111" model="account.account.template">
               <field name="code">111</field>
@@ -400,41 +408,76 @@
         </record>
 
 
-      <!-- PATRIMONIO -->
+        <!-- PATRIMONIO -->
 
         <record id="chart_3" model="account.account.template">
             <field name="code">3</field>
             <field name="name">Patrimonio</field>
+            <field name="type" ref="account_type_patrimonio"/>
             <field name="parent" ref="chart_0"/>
+        </record>
+        <record id="chart_310" model="account.account.template">
+            <field name="code">310</field>
+            <field name="name">Capital</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="parent" ref="chart_3"/>
+        </record>
+        <record id="chart_310909000" model="account.account.template">
+            <field name="code">310909000</field>
+            <field name="name">Capital Social Autorizado</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="parent" ref="chart_310"/>
+        </record>
+        <record id="chart_330" model="account.account.template">
+            <field name="code">330</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="name">Ajuste anos anteriores</field>
+            <field name="parent" ref="chart_3"/>
+        </record>
+        <record id="chart_330909000" model="account.account.template">
+            <field name="code">330909000</field>
+            <field name="name">Ajuste anos anteriores</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="parent" ref="chart_330"/>
+        </record>
+        <record id="chart_350" model="account.account.template">
+            <field name="code">350</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="name">Utilidades retenidas</field>
+            <field name="parent" ref="chart_3"/>
+        </record>
+        <record id="chart_350909000" model="account.account.template">
+            <field name="code">350909000</field>
+            <field name="name">Utilidades retenidas</field>
+            <field name="type" ref="account_type_patrimonio"/>
+            <field name="parent" ref="chart_350"/>
         </record>
         <record id="chart_390" model="account.account.template">
             <field name="code">390</field>
+            <field name="type" ref="account_type_patrimonio"/>
             <field name="name">Ganancia y/o perdida del ejercicio</field>
             <field name="parent" ref="chart_3"/>
-        </record>
-        <record id="chart_39090" model="account.account.template">
-            <field name="code">39090</field>
-            <field name="name">Ganancia y/o perdida del ejercicio</field>
-            <field name="parent" ref="chart_390"/>
         </record>
         <record id="chart_390909999" model="account.account.template">
             <field name="code">390909999</field>
             <field name="name">Ganancia y/o perdida del ejercicio</field>
             <field name="type" ref="account_type_patrimonio"/>
-            <field name="parent" ref="chart_39090"/>
+            <field name="parent" ref="chart_390"/>
         </record>
 
 
-      <!-- VENTAS -->
+        <!-- VENTAS -->
 
         <record id="chart_4" model="account.account.template">
             <field name="code">4</field>
             <field name="name">Ventas</field>
+            <field name="type" ref="account_type_ventas"/>
             <field name="parent" ref="chart_0"/>
         </record>
         <record id="chart_410" model="account.account.template">
             <field name="code">410</field>
             <field name="name">Ventas</field>
+            <field name="type" ref="account_type_ventas"/>
             <field name="parent" ref="chart_4"/>
         </record>
         <record id="account_revenue" model="account.account.template">

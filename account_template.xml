@@ -440,27 +440,15 @@
             <field name="type" ref="account_type_patrimonio"/>
             <field name="parent" ref="chart_330"/>
         </record>
-        <record id="chart_350" model="account.account.template">
-            <field name="code">350</field>
-            <field name="type" ref="account_type_patrimonio"/>
-            <field name="name">Utilidades retenidas</field>
-            <field name="parent" ref="chart_3"/>
-        </record>
-        <record id="chart_350909000" model="account.account.template">
-            <field name="code">350909000</field>
-            <field name="name">Utilidades retenidas</field>
-            <field name="type" ref="account_type_patrimonio"/>
-            <field name="parent" ref="chart_350"/>
-        </record>
         <record id="chart_390" model="account.account.template">
             <field name="code">390</field>
             <field name="type" ref="account_type_patrimonio"/>
-            <field name="name">Ganancia y/o perdida del ejercicio</field>
+            <field name="name">Utilidades retenidas</field>
             <field name="parent" ref="chart_3"/>
         </record>
         <record id="chart_390909999" model="account.account.template">
             <field name="code">390909999</field>
-            <field name="name">Ganancia y/o perdida del ejercicio</field>
+            <field name="name">Utilidades retenidas</field>
             <field name="type" ref="account_type_patrimonio"/>
             <field name="parent" ref="chart_390"/>
         </record>

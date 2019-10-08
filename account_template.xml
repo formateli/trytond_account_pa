@@ -143,25 +143,25 @@
         <record id="chart_1" model="account.account.template">
             <field name="code">1</field>
             <field name="name">Activo</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_0"/>
         </record>
         <record id="chart_11" model="account.account.template">
             <field name="code">11</field>
             <field name="name">Activo circulante</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_1"/>
         </record>
         <record id="chart_111" model="account.account.template">
-              <field name="code">111</field>
-              <field name="name">Caja y Bancos</field>
-              <field name="type" ref="account_type_caja_banco"/>
-              <field name="parent" ref="chart_11"/>
+            <field name="code">111</field>
+            <field name="name">Caja y Bancos</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_11110" model="account.account.template">
               <field name="code">11110</field>
               <field name="name">Caja</field>
-              <field name="type" ref="account_type_caja_banco"/>
+              <field name="type" eval="None"/>
               <field name="parent" ref="chart_111"/>
         </record>
         <record id="chart_1111010" model="account.account.template">
@@ -177,41 +177,41 @@
               <field name="parent" ref="chart_11110"/>
         </record>
         <record id="chart_11120" model="account.account.template">
-              <field name="code">11120</field>
-              <field name="name">Bancos - Cuenta Corriente</field>
-              <field name="type" ref="account_type_caja_banco"/>
-              <field name="parent" ref="chart_111"/>
+            <field name="code">11120</field>
+            <field name="name">Bancos - Cuenta Corriente</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_111"/>
         </record>
         <record id="chart_1112010" model="account.account.template">
-              <field name="code">1112010</field>
-              <field name="name">Cuenta corriente</field>
-              <field name="type" ref="account_type_caja_banco"/>
-              <field name="parent" ref="chart_11120"/>
+            <field name="code">1112010</field>
+            <field name="name">Cuenta corriente</field>
+            <field name="type" ref="account_type_caja_banco"/>
+            <field name="parent" ref="chart_11120"/>
         </record>
         <record id="chart_112" model="account.account.template">
               <field name="code">112</field>
               <field name="name">Cuentas por Cobrar</field>
-              <field name="type" ref="account_type_activo_circulante"/>
+              <field name="type" eval="None"/>
               <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_11210" model="account.account.template">
-              <field name="code">11210</field>
-              <field name="name">Cuentas por Cobrar Comerciales</field>
-              <field name="type" ref="account_type_activo_circulante"/>
-              <field name="parent" ref="chart_112"/>
+            <field name="code">11210</field>
+            <field name="name">Cuentas por Cobrar Comerciales</field>
+            <field name="type" eval="None"/>
+            <field name="parent" ref="chart_112"/>
         </record>
         <record id="account_receivable" model="account.account.template">
-              <field name="code">112109999</field>
-              <field name="name">Cuentas por Cobrar Comerciales</field>
-              <field name="type" ref="account_type_por_cobrar"/>
-              <field name="reconcile" eval="True"/>
-              <field name="party_required" eval="True"/>
-              <field name="parent" ref="chart_11210"/>
+            <field name="code">112109999</field>
+            <field name="name">Cuentas por Cobrar Comerciales</field>
+            <field name="type" ref="account_type_por_cobrar"/>
+            <field name="reconcile" eval="True"/>
+            <field name="party_required" eval="True"/>
+            <field name="parent" ref="chart_11210"/>
         </record>
         <record id="chart_11290" model="account.account.template">
             <field name="code">11290</field>
             <field name="name">Cuentas por Cobrar Otros</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_112"/>
         </record>
         <record id="chart_112909999" model="account.account.template">
@@ -225,13 +225,13 @@
         <record id="chart_115" model="account.account.template">
             <field name="code">115</field>
             <field name="name">Inventario de Mercancia</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_11510" model="account.account.template">
             <field name="code">11510</field>
             <field name="name">Inventario de Mercancia</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_115"/>
         </record>
 
@@ -245,7 +245,7 @@
         <record id="chart_11580" model="account.account.template">
             <field name="code">11580</field>
             <field name="name">Inventario en Transito</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_115"/>
         </record>
 
@@ -281,13 +281,13 @@
         <record id="chart_116" model="account.account.template">
             <field name="code">116</field>
             <field name="name">Gastos Pagados por Adelantado</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_11610" model="account.account.template">
             <field name="code">11610</field>
             <field name="name">Gastos Pagados por Adelantado</field>
-            <field name="type" ref="account_type_activo_circulante"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_116"/>
         </record>
         <record id="chart_116109999" model="account.account.template">
@@ -300,19 +300,19 @@
         <record id="chart_14" model="account.account.template">
             <field name="code">14</field>
             <field name="name">Activo Fijo</field>
-            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_1"/>
         </record>
         <record id="chart_142" model="account.account.template">
             <field name="code">112</field>
             <field name="name">Mobiliario y Equipos</field>
-            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_11"/>
         </record>
         <record id="chart_14210" model="account.account.template">
             <field name="code">14210</field>
             <field name="name">Mobiliario y Equipos</field>
-            <field name="type" ref="account_type_activo_fijo"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_142"/>
         </record>
         <record id="chart_142109999" model="account.account.template">
@@ -413,13 +413,13 @@
         <record id="chart_3" model="account.account.template">
             <field name="code">3</field>
             <field name="name">Patrimonio</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_0"/>
         </record>
         <record id="chart_310" model="account.account.template">
             <field name="code">310</field>
             <field name="name">Capital</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_3"/>
         </record>
         <record id="chart_310909000" model="account.account.template">
@@ -430,7 +430,7 @@
         </record>
         <record id="chart_330" model="account.account.template">
             <field name="code">330</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" eval="None"/>
             <field name="name">Ajuste anos anteriores</field>
             <field name="parent" ref="chart_3"/>
         </record>
@@ -442,7 +442,7 @@
         </record>
         <record id="chart_390" model="account.account.template">
             <field name="code">390</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" eval="None"/>
             <field name="name">Utilidades retenidas</field>
             <field name="parent" ref="chart_3"/>
         </record>
@@ -459,13 +459,13 @@
         <record id="chart_4" model="account.account.template">
             <field name="code">4</field>
             <field name="name">Ventas</field>
-            <field name="type" ref="account_type_ventas"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_0"/>
         </record>
         <record id="chart_410" model="account.account.template">
             <field name="code">410</field>
             <field name="name">Ventas</field>
-            <field name="type" ref="account_type_ventas"/>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_4"/>
         </record>
         <record id="account_revenue" model="account.account.template">

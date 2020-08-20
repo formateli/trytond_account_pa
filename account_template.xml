@@ -304,10 +304,10 @@
             <field name="parent" ref="chart_1"/>
         </record>
         <record id="chart_142" model="account.account.template">
-            <field name="code">112</field>
+            <field name="code">142</field>
             <field name="name">Mobiliario y Equipos</field>
             <field name="type" eval="None"/>
-            <field name="parent" ref="chart_11"/>
+            <field name="parent" ref="chart_14"/>
         </record>
         <record id="chart_14210" model="account.account.template">
             <field name="code">14210</field>

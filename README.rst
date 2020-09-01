@@ -1,11 +1,13 @@
-trytond_account_pa
-==================
+Panama Account for Tryton
+#########################
 
-Basic Panama account module for Tryton.
+Basic Panama account module for Tryton based on IFRS.
+
+This module depends on account_ifrs_es, 
+see https://github.com/formateli/trytond_formateli_account_ifrs_es
 
 It defines:
-    Account type template.
-    Account template (Chart of account template).
+    Account template adjustment (Chart of account template).
     Tax groups.
     Tax code template.
     Tax template.
@@ -13,18 +15,19 @@ It defines:
 Installing
 ----------
 
-See INSTALL
+Drop 'trytond_account_pa' folder on 'tryrond/modules/' as 'account_pa' and
+update Tryton database.
 
 Support
 -------
 
-If you encounter any problems with Tryton, please don't hesitate to ask
-questions on the Tryton bug tracker, mailing list, wiki or IRC channel:
+For Tryton framework:
 
-  http://bugs.tryton.org/
-  http://groups.tryton.org/
-  http://wiki.tryton.org/
-  irc://irc.freenode.net/tryton
+    * https://tryton.org/
+
+For this module
+
+    * https://github.com/formateli/trytond_account_pa
 
 License
 -------
@@ -37,7 +40,7 @@ Copyright
 See COPYRIGHT
 
 
-For more information please visit the Tryton web site:
+For more information please visit:
 
-  http://www.formateli.com/
-  http://www.tryton.org/
+    * http://www.tryton.org/
+    * https://formateli.com

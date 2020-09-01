@@ -6,11 +6,11 @@ Basic Panama account module for Tryton based on IFRS.
 This module depends on account_ifrs_es, 
 see https://github.com/formateli/trytond_formateli_account_ifrs_es
 
-It defines:
-    Account template adjustment (Chart of account template).
-    Tax groups.
-    Tax code template.
-    Tax template.
+* Account template adjustment (Chart of account template).
+* Tax groups.
+* Tax code template.
+* Tax template.
+
 
 Installing
 ----------

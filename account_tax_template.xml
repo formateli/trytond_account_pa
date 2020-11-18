@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of account_pa module.
+The COPYRIGHT file at the top level of this repository contains
+the full copyright notices and license terms. -->
+<tryton>
+    <data noupdate="1">
+
+        <!-- TAX GROUPS -->
+
+        <record id="tax_group_islr" model="account.tax.group">
+            <field name="code">010</field>
+            <field name="name">I.S.L.R.</field>
+        </record>
+        <record id="tax_group_itbms" model="account.tax.group">
+            <field name="code">020</field>
+            <field name="name">I.T.B.M.S.</field>
+        </record>
+        <record id="tax_group_municipio" model="account.tax.group">
+            <field name="code">030</field>
+            <field name="name">Municipio</field>
+        </record>
+
+
+        <!-- TAX CODE TEMPLATE -->
+
+        <record id="tax_code_tamplate_itbms" model="account.tax.code.template">
+            <field name="code">ITBMS</field>
+            <field name="name">ITBMS (Impuesto a las Ventas)</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_tamplate_a1" model="account.tax.code.template">
+            <field name="code">A1</field>
+            <field name="name">A1. DEBITOS Fiscal - BASE IMPONIBLE</field>
+            <field name="parent" ref="tax_code_tamplate_itbms"/>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_tamplate_a2" model="account.tax.code.template">
+            <field name="code">A2</field>
+            <field name="name">A2. DEBITOS Fiscal - DEBITO Fiscal</field>
+            <field name="parent" ref="tax_code_tamplate_itbms"/>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_tamplate_b1" model="account.tax.code.template">
+            <field name="code">B1</field>
+            <field name="name">B1. CREDITOS Fiscal - BASE IMPONIBLE</field>
+            <field name="parent" ref="tax_code_tamplate_itbms"/>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_tamplate_b2" model="account.tax.code.template">
+            <field name="code">B2</field>
+            <field name="name">B2. CREDITOS Fiscal - CREDITO Fiscal</field>
+            <field name="parent" ref="tax_code_tamplate_itbms"/>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <!-- TAX TEMPLATE -->
+
+        <record id="tax_tmpl_venta_0" model="account.tax.template">
+            <field name="name">ITBMS EXENTO EN VENTAS (0%)</field>
+            <field name="description">ITBMS EXENTO EN VENTAS (0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="0" />
+            <field name="invoice_account" ref="chart_21302010"/>
+            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_venta_7" model="account.tax.template">
+            <field name="name">ITBMS GENERAL EN VENTAS (7.0%)</field>
+            <field name="description">ITBMS GENERAL EN VENTAS (7.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.07')" />
+            <field name="invoice_account" ref="chart_21302010"/>
+            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_venta_10" model="account.tax.template">
+            <field name="name">ITBMS VENTA DE LICOR (10.0%)</field>
+            <field name="description">ITBMS VENTA DE LICOR (10.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')" />
+            <field name="invoice_account" ref="chart_21302010"/>
+            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_tmpl_compra_0" model="account.tax.template">
+            <field name="name">ITBMS EXENTO EN COMPRAS (0%)</field>
+            <field name="description">ITBMS EXENTO EN COMPRAS (0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="0" />
+            <field name="invoice_account" ref="chart_21302020"/>
+            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_compra_7" model="account.tax.template">
+            <field name="name">ITBMS GENERAL EN COMPRAS (7.0%)</field>
+            <field name="description">ITBMS GENERAL EN COMPRAS (7.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.07')" />
+            <field name="invoice_account" ref="chart_21302020"/>
+            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_compra_10" model="account.tax.template">
+            <field name="name">ITBMS COMPRA DE LICOR (10.0%)</field>
+            <field name="description">ITBMS COMPRA DE LICOR (10.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')" />
+            <field name="invoice_account" ref="chart_21302020"/>
+            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+    </data>
+</tryton>

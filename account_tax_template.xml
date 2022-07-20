@@ -28,8 +28,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="0" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
@@ -39,8 +39,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.07')" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
@@ -50,8 +50,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.1')" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
@@ -62,8 +62,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="0" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
@@ -73,8 +73,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.07')" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
@@ -84,8 +84,8 @@ the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_itbms"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.1')" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
             <field name="sequence">0</field>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>

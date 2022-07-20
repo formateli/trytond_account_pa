@@ -49,17 +49,43 @@ the full copyright notices and license terms. -->
             <field name="type" eval="None"/>
             <field name="parent" ref="account_ifrs.chart_2130_es"/>
         </record>
+
         <record id="chart_21302010" model="account.account.template">
             <field name="code">21302010</field>
-            <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
+	    <field name="name">I.T.B.M.S debito fiscal por pagar</field>
+            <field name="type" eval="None"/>
             <field name="parent" ref="chart_213020"/>
         </record>
+        <record id="chart_2130201010" model="account.account.template">
+            <field name="code">2130201010</field>
+            <field name="name">I.T.B.M.S retenido por terceros</field>
+            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
+            <field name="parent" ref="chart_21302010"/>
+        </record>
+        <record id="chart_2130201020" model="account.account.template">
+            <field name="code">2130201020</field>
+            <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
+            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
+            <field name="parent" ref="chart_21302010"/>
+        </record>
+
         <record id="chart_21302020" model="account.account.template">
             <field name="code">21302020</field>
+            <field name="name">I.T.B.M.S credito fiscal por cobrar</field>
+            <field name="type" eval="None"/>
+	    <field name="parent" ref="chart_213020"/>
+        </record>
+        <record id="chart_2130202010" model="account.account.template">
+            <field name="code">2130202010</field>
+            <field name="name">I.T.B.M.S retenido a terceros</field>
+            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
+            <field name="parent" ref="chart_21302020"/>
+        </record>
+        <record id="chart_2130202020" model="account.account.template">
+            <field name="code">2130202020</field>
             <field name="name">I.T.B.M.S credito fiscal por cobrar (Compra)</field>
             <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
-            <field name="parent" ref="chart_213020"/>
+            <field name="parent" ref="chart_21302020"/>
         </record>
 
         <record id="account_ifrs.chart_9_es" model="account.account.template">

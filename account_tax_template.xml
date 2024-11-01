@@ -20,6 +20,75 @@ the full copyright notices and license terms. -->
             <field name="name">Municipio</field>
         </record>
 
+        <!-- TAX TEMPLATE -->
+
+        <record id="tax_tmpl_venta_0" model="account.tax.template">
+            <field name="name">ITBMS EXENTO EN VENTAS (0%)</field>
+            <field name="description">ITBMS EXENTO EN VENTAS (0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="0" />
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_venta_7" model="account.tax.template">
+            <field name="name">ITBMS GENERAL EN VENTAS (7.0%)</field>
+            <field name="description">ITBMS GENERAL EN VENTAS (7.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.07')" />
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_venta_10" model="account.tax.template">
+            <field name="name">ITBMS VENTA DE LICOR (10.0%)</field>
+            <field name="description">ITBMS VENTA DE LICOR (10.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')" />
+            <field name="invoice_account" ref="chart_2130201020"/>
+            <field name="credit_note_account" ref="chart_2130201020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+
+        <record id="tax_tmpl_compra_0" model="account.tax.template">
+            <field name="name">ITBMS EXENTO EN COMPRAS (0%)</field>
+            <field name="description">ITBMS EXENTO EN COMPRAS (0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="0" />
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_compra_7" model="account.tax.template">
+            <field name="name">ITBMS GENERAL EN COMPRAS (7.0%)</field>
+            <field name="description">ITBMS GENERAL EN COMPRAS (7.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.07')" />
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_tmpl_compra_10" model="account.tax.template">
+            <field name="name">ITBMS COMPRA DE LICOR (10.0%)</field>
+            <field name="description">ITBMS COMPRA DE LICOR (10.0%)</field>
+            <field name="group" ref="tax_group_itbms"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')" />
+            <field name="invoice_account" ref="chart_2130202020"/>
+            <field name="credit_note_account" ref="chart_2130202020"/>
+            <field name="sequence">0</field>
+            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
 
         <!-- TAX CODE TEMPLATE -->
 
@@ -35,12 +104,68 @@ the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_tamplate_itbms"/>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
+        <record id="tax_code_tax_tamplate_debito_base7_invoice_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a1"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_venta_7"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_base7_credit_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a1"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_venta_7"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_base10_invoice_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a1"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_venta_10"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_base10_credit_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a1"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_venta_10"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
 
         <record id="tax_code_tamplate_a2" model="account.tax.code.template">
             <field name="code">A2</field>
             <field name="name">A2. DEBITOS Fiscal - DEBITO Fiscal</field>
             <field name="parent" ref="tax_code_tamplate_itbms"/>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_debito7_invoice_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a2"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_venta_7"/>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_debito7_credit_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a2"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_venta_7"/>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_debito10_invoice_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a2"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_venta_10"/>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_debito_debito10_credit_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_a2"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_venta_10"/>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
         </record>
 
         <record id="tax_code_tamplate_b1" model="account.tax.code.template">
@@ -49,6 +174,34 @@ the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_tamplate_itbms"/>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
+        <record id="tax_code_tax_tamplate_credit_base7_invoice_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b1"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_credito_base7_credit_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b1"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_tax_tamplate_credit_base10_invoice_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b1"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_tax_tamplate_credito_base10_credit_base" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b1"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
 
         <record id="tax_code_tamplate_b2" model="account.tax.code.template">
             <field name="code">B2</field>
@@ -56,75 +209,33 @@ the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_tamplate_itbms"/>
             <field name="account" ref="account_ifrs.account_template_root_es"/>
         </record>
-
-        <!-- TAX TEMPLATE -->
-
-        <record id="tax_tmpl_venta_0" model="account.tax.template">
-            <field name="name">ITBMS EXENTO EN VENTAS (0%)</field>
-            <field name="description">ITBMS EXENTO EN VENTAS (0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="0" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        <record id="tax_code_tax_tamplate_credito_credito7_invoice_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b2"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
         </record>
-        <record id="tax_tmpl_venta_7" model="account.tax.template">
-            <field name="name">ITBMS GENERAL EN VENTAS (7.0%)</field>
-            <field name="description">ITBMS GENERAL EN VENTAS (7.0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="Decimal('0.07')" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        <record id="tax_code_tax_tamplate_credito_credito7_credit_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b2"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
         </record>
-        <record id="tax_tmpl_venta_10" model="account.tax.template">
-            <field name="name">ITBMS VENTA DE LICOR (10.0%)</field>
-            <field name="description">ITBMS VENTA DE LICOR (10.0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="Decimal('0.1')" />
-            <field name="invoice_account" ref="chart_21302010"/>
-            <field name="credit_note_account" ref="chart_21302010"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        <record id="tax_code_tax_tamplate_credito_credito10_invoice_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b2"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
         </record>
-
-        <record id="tax_tmpl_compra_0" model="account.tax.template">
-            <field name="name">ITBMS EXENTO EN COMPRAS (0%)</field>
-            <field name="description">ITBMS EXENTO EN COMPRAS (0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="0" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
-        </record>
-        <record id="tax_tmpl_compra_7" model="account.tax.template">
-            <field name="name">ITBMS GENERAL EN COMPRAS (7.0%)</field>
-            <field name="description">ITBMS GENERAL EN COMPRAS (7.0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="Decimal('0.07')" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
-        </record>
-        <record id="tax_tmpl_compra_10" model="account.tax.template">
-            <field name="name">ITBMS COMPRA DE LICOR (10.0%)</field>
-            <field name="description">ITBMS COMPRA DE LICOR (10.0%)</field>
-            <field name="group" ref="tax_group_itbms"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="Decimal('0.1')" />
-            <field name="invoice_account" ref="chart_21302020"/>
-            <field name="credit_note_account" ref="chart_21302020"/>
-            <field name="sequence">0</field>
-            <field name="account" ref="account_ifrs.account_template_root_es"/>
+        <record id="tax_code_tax_tamplate_credito_credito10_credit_impuesto" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_tamplate_b2"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
         </record>
 
     </data>

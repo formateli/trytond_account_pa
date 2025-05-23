@@ -92,151 +92,240 @@ the full copyright notices and license terms. -->
 
         <!-- TAX CODE TEMPLATE -->
 
-        <record id="tax_code_tamplate_itbms" model="account.tax.code.template">
+        <record id="tax_code_template_itbms" model="account.tax.code.template">
             <field name="code">ITBMS</field>
             <field name="name">ITBMS (Impuesto a las Ventas)</field>
             <field name="account" ref="account.account_template_root_es"/>
         </record>
 
-        <record id="tax_code_tamplate_a1" model="account.tax.code.template">
-            <field name="code">DFBI</field>
-            <field name="name">Debito Fiscal - Base Imponible</field>
-            <field name="parent" ref="tax_code_tamplate_itbms"/>
+        <record id="tax_code_template_itmbs_base" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE</field>
+            <field name="name">ITMBS Base Imponible</field>
+            <field name="parent" ref="tax_code_template_itbms"/>
             <field name="account" ref="account.account_template_root_es"/>
         </record>
-        <record id="tax_code_tax_tamplate_debito_base7_invoice_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a1"/>
+        <record id="tax_code_template_itmbs_base_db_0" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.DB.00</field>
+            <field name="name">Debito Fiscal - Base Imponible Exento</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_base_db_0_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_0"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_venta_0"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_db_0_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_0"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_venta_0"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_db_7" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.DB.07</field>
+            <field name="name">Debito Fiscal - Base Imponible 7%</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_base_db_7_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_7"/>
             <field name="operator">+</field>
             <field name="tax" ref="tax_tmpl_venta_7"/>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_base7_credit_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a1"/>
+        <record id="tax_code_template_itmbs_base_db_7_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_7"/>
             <field name="operator">-</field>
             <field name="tax" ref="tax_tmpl_venta_7"/>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_base10_invoice_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a1"/>
+        <record id="tax_code_template_itmbs_base_db_10" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.DB.10</field>
+            <field name="name">Debito Fiscal - Base Imponible 10%</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_base_db_10_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_10"/>
             <field name="operator">+</field>
             <field name="tax" ref="tax_tmpl_venta_10"/>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_base10_credit_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a1"/>
+        <record id="tax_code_template_itmbs_base_db_10_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_db_10"/>
             <field name="operator">-</field>
             <field name="tax" ref="tax_tmpl_venta_10"/>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
-
-        <record id="tax_code_tamplate_a2" model="account.tax.code.template">
-            <field name="code">DFDF</field>
-            <field name="name">Debito Fiscal - Debito Fiscal</field>
-            <field name="parent" ref="tax_code_tamplate_itbms"/>
+        <record id="tax_code_template_itmbs_base_cr_0" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.CR.00</field>
+            <field name="name">Credito Fiscal - Base Imponible Exento</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
             <field name="account" ref="account.account_template_root_es"/>
         </record>
-        <record id="tax_code_tax_tamplate_debito_debito7_invoice_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a2"/>
+        <record id="tax_code_template_itmbs_base_cr_0_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_0"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_0"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_0_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_0"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_0"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_7" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.CR.07</field>
+            <field name="name">Credito Fiscal - Base Imponible 7%</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_7_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_7"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_7_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_7"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_10" model="account.tax.code.template">
+            <field name="code">ITBMS.BASE.CR.10</field>
+            <field name="name">Credito Fiscal - Base Imponible 10%</field>
+            <field name="parent" ref="tax_code_template_itmbs_base"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_10_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_10"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_template_itmbs_base_cr_10_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_base_cr_10"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_10"/>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_template_itbms_imp" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP</field>
+            <field name="name">ITMBS Impuesto</field>
+            <field name="parent" ref="tax_code_template_itbms"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_template_itmbs_imp_7" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.07</field>
+            <field name="name">ITMBS Impuesto 7%</field>
+            <field name="parent" ref="tax_code_template_itbms_imp"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_template_itmbs_imp_7_db" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.07.DB</field>
+            <field name="name">Debito Fiscal - Impuesto 7%</field>
+            <field name="parent" ref="tax_code_template_itmbs_imp_7"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_imp_7_db_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_7_db"/>
             <field name="operator">+</field>
             <field name="tax" ref="tax_tmpl_venta_7"/>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_debito7_credit_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a2"/>
+        <record id="tax_code_template_itmbs_imp_7_db_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_7_db"/>
             <field name="operator">-</field>
             <field name="tax" ref="tax_tmpl_venta_7"/>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_debito10_invoice_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a2"/>
+        <record id="tax_code_template_itmbs_imp_7_cr" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.07.CR</field>
+            <field name="name">Credito Fiscal - Impuesto 7%</field>
+            <field name="parent" ref="tax_code_template_itmbs_imp_7"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_imp_7_cr_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_7_cr"/>
+            <field name="operator">-</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="tax_code_template_itmbs_imp_7_cr_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_7_cr"/>
+            <field name="operator">+</field>
+            <field name="tax" ref="tax_tmpl_compra_7"/>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record id="tax_code_template_itmbs_imp_10" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.10</field>
+            <field name="name">ITMBS Impuesto 10%</field>
+            <field name="parent" ref="tax_code_template_itbms_imp"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+
+        <record id="tax_code_template_itmbs_imp_10_db" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.10.DB</field>
+            <field name="name">Debito Fiscal - Impuesto 10%</field>
+            <field name="parent" ref="tax_code_template_itmbs_imp_10"/>
+            <field name="account" ref="account.account_template_root_es"/>
+        </record>
+        <record id="tax_code_template_itmbs_imp_10_db_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_10_db"/>
             <field name="operator">+</field>
             <field name="tax" ref="tax_tmpl_venta_10"/>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record id="tax_code_tax_tamplate_debito_debito10_credit_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_a2"/>
+        <record id="tax_code_template_itmbs_imp_10_db_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_10_db"/>
             <field name="operator">-</field>
             <field name="tax" ref="tax_tmpl_venta_10"/>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
-
-        <record id="tax_code_tamplate_b1" model="account.tax.code.template">
-            <field name="code">CFBI</field>
-            <field name="name">Credito Fiscal - Base Imponible</field>
-            <field name="parent" ref="tax_code_tamplate_itbms"/>
+        <record id="tax_code_template_itmbs_imp_10_cr" model="account.tax.code.template">
+            <field name="code">ITBMS.IMP.10.CR</field>
+            <field name="name">Credito Fiscal - Impuesto 10%</field>
+            <field name="parent" ref="tax_code_template_itmbs_imp_10"/>
             <field name="account" ref="account.account_template_root_es"/>
         </record>
-        <record id="tax_code_tax_tamplate_credit_base7_invoice_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b1"/>
-            <field name="operator">-</field>
-            <field name="tax" ref="tax_tmpl_compra_7"/>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record id="tax_code_tax_tamplate_credito_base7_credit_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b1"/>
-            <field name="operator">+</field>
-            <field name="tax" ref="tax_tmpl_compra_7"/>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-        <record id="tax_code_tax_tamplate_credit_base10_invoice_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b1"/>
-            <field name="operator">-</field>
-            <field name="tax" ref="tax_tmpl_compra_10"/>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record id="tax_code_tax_tamplate_credito_base10_credit_base" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b1"/>
-            <field name="operator">+</field>
-            <field name="tax" ref="tax_tmpl_compra_10"/>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record id="tax_code_tamplate_b2" model="account.tax.code.template">
-            <field name="code">CFCF</field>
-            <field name="name">Credito Fiscal - Credito Fiscal</field>
-            <field name="parent" ref="tax_code_tamplate_itbms"/>
-            <field name="account" ref="account.account_template_root_es"/>
-        </record>
-        <record id="tax_code_tax_tamplate_credito_credito7_invoice_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b2"/>
-            <field name="operator">-</field>
-            <field name="tax" ref="tax_tmpl_compra_7"/>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record id="tax_code_tax_tamplate_credito_credito7_credit_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b2"/>
-            <field name="operator">+</field>
-            <field name="tax" ref="tax_tmpl_compra_7"/>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-        <record id="tax_code_tax_tamplate_credito_credito10_invoice_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b2"/>
+        <record id="tax_code_template_itmbs_imp_10_cr_line_in" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_10_cr"/>
             <field name="operator">-</field>
             <field name="tax" ref="tax_tmpl_compra_10"/>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record id="tax_code_tax_tamplate_credito_credito10_credit_impuesto" model="account.tax.code.line.template">
-            <field name="code" ref="tax_code_tamplate_b2"/>
+        <record id="tax_code_template_itmbs_imp_10_cr_line_cr" model="account.tax.code.line.template">
+            <field name="code" ref="tax_code_template_itmbs_imp_10_cr"/>
             <field name="operator">+</field>
             <field name="tax" ref="tax_tmpl_compra_10"/>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
-
     </data>
 </tryton>

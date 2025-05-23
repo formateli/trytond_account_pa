@@ -1,12 +1,11 @@
 Panama Account for Tryton
 #########################
 
-Basic Panama account module for Tryton based on IFRS.
+Basic Panama account module for Tryton.
 
-This module depends on account_ifrs module, 
-see https://github.com/formateli/trytond_formateli_account_ifrs
+This module depends on account module.
 
-* Account template adjustment (Chart of account template).
+* Account template for Taxes.
 * Tax groups.
 * Tax code template.
 * Tax template.

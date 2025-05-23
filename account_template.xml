@@ -4,95 +4,53 @@ The COPYRIGHT file at the top level of this repository contains
 the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <!-- Account Type Template -->
-
-        <record id="account_ifrs.account_type_ifrs_tax_income_es" model="account.account.type.template">
-            <field name="name">Impuesto Sobre la Renta</field>
-        </record>
-
-        <record model="account.account.type.template" id="type_ifrs_deposito_garantia">
-            <field name="name">Depositos en Garantia</field>
-            <field name="parent" ref="account_ifrs.account_type_ifrs_non_current_asset_es"/>
-            <field name="sequence" eval="40"/>
-            <field name="statement">balance</field>
-        </record>
-
         <!-- Account Template -->
-
-        <record id="chart_11201090" model="account.account.template">
-            <field name="code">11201090</field>
-            <field name="name">Provision para Cuentas Incobrables</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_receivable_es"/>
-            <field name="parent" ref="account_ifrs.chart_112010_es"/>
-        </record>
-
-        <record id="chart_1240" model="account.account.template">
-            <field name="code">1240</field>
-            <field name="name">Depositos en Garantia</field>
-            <field name="type" eval="None"/>
-            <field name="parent" ref="account_ifrs.chart_12_es"/>
-        </record>
-        <record id="chart_124090" model="account.account.template">
-            <field name="code">124090</field>
-            <field name="name">Otros Depositos en Garantia</field>
-            <field name="type" ref="type_ifrs_deposito_garantia"/>
-            <field name="parent" ref="chart_1240"/>
-        </record>
-
-        <record id="account_ifrs.account_template_tax_es" model="account.account.template">
-            <field name="name">Impuesto Sobre la Renta</field>
-        </record>
-
-        <record id="chart_213020" model="account.account.template">
-            <field name="code">213020</field>
+        <record id="account_template_2_5_0_es" model="account.account.template">
+            <field name="code">2.5.0</field>
             <field name="name">I.T.B.M.S</field>
-            <field name="type" eval="None"/>
-            <field name="parent" ref="account_ifrs.chart_2130_es"/>
+	    <field name="type" eval="None"/>
+	    <field name="closed" eval="True"/>
+            <field name="parent" ref="account.account_template_2_0_0_es"/>
         </record>
 
-        <record id="chart_21302010" model="account.account.template">
-            <field name="code">21302010</field>
+        <record id="account_template_2_5_1_es" model="account.account.template">
+            <field name="code">2.5.1</field>
 	    <field name="name">I.T.B.M.S debito fiscal por pagar</field>
-            <field name="type" eval="None"/>
-            <field name="parent" ref="chart_213020"/>
+	    <field name="type" eval="None"/>
+	    <field name="closed" eval="True"/>
+            <field name="parent" ref="account_template_2_5_0_es"/>
         </record>
-        <record id="chart_2130201010" model="account.account.template">
-            <field name="code">2130201010</field>
+        <record id="account_template_2_5_1_1_es" model="account.account.template">
+            <field name="code">2.5.1.1</field>
             <field name="name">I.T.B.M.S retenido por terceros</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
-            <field name="parent" ref="chart_21302010"/>
+	    <field name="type" ref="account.account_type_template_current_tax_es"/>
+            <field name="parent" ref="account_template_2_5_1_es"/>
         </record>
-        <record id="chart_2130201020" model="account.account.template">
-            <field name="code">2130201020</field>
+        <record id="account_template_itbms_venta_es" model="account.account.template">
+            <field name="code">2.5.1.2</field>
             <field name="name">I.T.B.M.S debito fiscal por pagar (Venta)</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
-            <field name="parent" ref="chart_21302010"/>
+	    <field name="type" ref="account.account_type_template_current_tax_es"/>
+            <field name="parent" ref="account_template_2_5_1_es"/>
         </record>
 
-        <record id="chart_21302020" model="account.account.template">
-            <field name="code">21302020</field>
+        <record id="account_template_2_5_2_es" model="account.account.template">
+            <field name="code">2.5.2</field>
             <field name="name">I.T.B.M.S credito fiscal por cobrar</field>
-            <field name="type" eval="None"/>
-	    <field name="parent" ref="chart_213020"/>
+	    <field name="type" eval="None"/>
+	    <field name="closed" eval="True"/>
+	    <field name="parent" ref="account_template_2_5_0_es"/>
         </record>
-        <record id="chart_2130202010" model="account.account.template">
-            <field name="code">2130202010</field>
+        <record id="account_template_2_5_2_1_es" model="account.account.template">
+            <field name="code">2.5.2.1</field>
             <field name="name">I.T.B.M.S retenido a terceros</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
-            <field name="parent" ref="chart_21302020"/>
+	    <field name="type" ref="account.account_type_template_current_tax_es"/>
+            <field name="parent" ref="account_template_2_5_2_es"/>
         </record>
-        <record id="chart_2130202020" model="account.account.template">
-            <field name="code">2130202020</field>
+        <record id="account_template_itbms_compra_es" model="account.account.template">
+            <field name="code">2.5.2.2</field>
             <field name="name">I.T.B.M.S credito fiscal por cobrar (Compra)</field>
-            <field name="type" ref="account_ifrs.account_type_ifrs_tax_es"/>
-            <field name="parent" ref="chart_21302020"/>
-        </record>
-
-        <record id="account_ifrs.chart_9_es" model="account.account.template">
-            <field name="name">Impuesto Sobre la Renta</field>
-        </record>
-        <record id="account_ifrs.chart_910_es" model="account.account.template">
-            <field name="name">Impuesto Sobre la Renta</field>
+	    <field name="type" ref="account.account_type_template_current_tax_es"/>
+            <field name="parent" ref="account_template_2_5_2_es"/>
         </record>
     </data>
 </tryton>
